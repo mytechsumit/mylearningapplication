@@ -3,9 +3,9 @@ name: Flutter CI/CD
 # जेव्हा main ब्रांचवर कोड push किंवा pull request येईल तेव्हा हे रन होईल
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
