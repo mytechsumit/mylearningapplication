@@ -1,0 +1,52 @@
+name: Flutter CI/CD
+
+# जेव्हा main ब्रांचवर कोड push किंवा pull request येईल तेव्हा हे रन होईल
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. GitHub वरून कोड चेकआऊट करणे
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Java सेट करणे (Android बिल्डसाठी आवश्यक)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      # 3. Flutter Environment सेट करणे
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x' # किंवा तुमची विशिष्ट व्हर्जन टाका
+          channel: 'stable'
+
+      # 4. डिपेंडन्सीज गेट करणे (flutter pub get)
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5. कोडचे ॲनालिसिस आणि टेस्टिंग (Optional पण उत्तम)
+      - name: Run Linter and Tests
+        run: |
+          flutter analyze
+          flutter test
+
+      # 6. Release APK बिल्ड करणे
+      - name: Build APK
+        run: flutter build apk --release
+
+      # 7. तयार झालेला APK GitHub वर अपलोड करणे (Artifact म्हणून)
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
