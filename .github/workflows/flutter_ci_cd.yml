@@ -2,7 +2,7 @@ name: Flutter CI/CD
 
 on:
   push:
-    branches: [ master ] # किंवा master (तुमच्या ब्रांचनुसार बदला)
+    branches: [ master ] 
   pull_request:
     branches: [ master ]
 
