@@ -8,7 +8,7 @@ import 'firebase_options.dart';
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  print("बॅकग्राउंड मेसेज आला: ${message.messageId}");
+  debugPrint("बॅकग्राउंड मेसेज आला: ${message.messageId}");
 }
 
 void main() async {
@@ -49,29 +49,29 @@ class _MyAppState extends State<MyApp> {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('युझरने परवानगी दिली!');
+      debugPrint('युझरने परवानगी दिली!');
 
       // २. या डिव्हाईसचा युनिक टोकन (FCM Token) मिळवा
       String? token = await _firebaseMessaging.getToken(
         vapidKey: "BPFBBiQxiVZ4sAxunMIhJXQ0WDnB-LBHPyUIkXmOnytgc0qle_eXoeiAA_nG3TWf6LeI--MZC244NtkHrgK4jQA"
       );
-      print("तुमच्या डिव्हाईसचा FCM Token: $token");
+      debugPrint("तुमच्या डिव्हाईसचा FCM Token: $token");
 
       // ३. जेव्हा ॲप चालू (Foreground) असेल आणि नोटिफिकेशन येईल
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        print('ॲप चालू असताना मेसेज आला!');
+        debugPrint('ॲप चालू असताना मेसेज आला!');
         if (message.notification != null) {
-          print('Title: ${message.notification!.title}');
-          print('Body: ${message.notification!.body}');
+          debugPrint('Title: ${message.notification!.title}');
+          debugPrint('Body: ${message.notification!.body}');
         }
       });
 
       // ४. जेव्हा युझर नोटिफिकेशनवर क्लिक करून ॲप ओपन करतो
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        print('युझरने नोटिफिकेशनवर क्लिक केले!');
+        debugPrint('युझरने नोटिफिकेशनवर क्लिक केले!');
       });
     } else {
-      print('युझरने परवानगी नाकारली.');
+      debugPrint('युझरने परवानगी नाकारली.');
     }
   }
 
