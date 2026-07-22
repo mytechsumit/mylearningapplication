@@ -1,8 +1,165 @@
+
+Gemini
+New chat
+Search chats
+Images
+Videos
+Library
+New notebook
+Flutter
+GitHub Actions Node.js Version Warning
+Hospital Logo Color Change
+Flutter Widget Overflow: उपाय आणि कोड
+Custom SVG Back Icon in Flutter
+Transparent Icon Generation Request
+Fixing Row Overflow in Flutter
+Maruti Dzire Tour S On-Road Cost
+App Theme Color Code Extraction
+UPI Daily and Monthly Transaction Limits
+Football Captain vs Cricket Captain
+CRED लोन: अतिरिक्त रक्कम मिळवा
+Port bsnl old sim to other jio
+Mala CI CD baddal mahiti dya
+Git आणि GitHub: एक ओळख
+Flutter Madhe Firebase Push Notification Setup
+Send Firebase Notification to Token
+SQL चे "Sequel" नाव: एक रंजक इतिहास
+mala allaudin khilji baddal mahiti dya
+Kontyahi Mobile Madhe Notification kas us Hot , Mhanje mobile chya internal kontya bag tyasathi kaam karto aani notification kontya app ch aahe he mobile la kas kal android and IoS device la . Mala purn Marathi Madhe Samjun Sanga
+C/C++ ट्रेनिंग: काय शिकावे?
+Android App Roadmap, Time, Cost
+YouTube आणि YouTube Premium मधील फरक
+Customizing MaterialBanner Animations in Flutter
+india ka aata paryant fifa world khelu shalkel naite
+TabBar Controller: Default vs Custom
+Flutter Bottom Navigation एकाच स्क्रीनवर
+C# Web URL Shortener Guide
+RaisedButton आणि FlatButton Ka Deprecate Kele Ahhe .. aani widgets properties and Wigets Deprecate ka kel Jajtat
+Flutter Widgets ची मराठीत माहिती
+How to Register for KBC
+Flutter App Usage Tracking
+Flutter Stateless Widgets: माहिती आणि उदाहरणे
+Site Completion Percentage Calculation
+`MaterialApp` ची फ्लटरमधील माहिती
+Goalkeeper's Diving Save
+Growers List Data Deletion Approval
+Flutter Layout Widget Mahiti
+US Tariff War and Global Trade
+Flutter Build Method: सविस्तर माहिती
+Flutter Widget Key आणि Super चा अर्थ
+Flutter Factory Constructor चा वापर
+Maharashtra Monsoon Travel Safety Advisory
+Nashik 2-Day Itinerary: Temples & Vineyards
+Nashik 3-Day Itinerary From Sambhajinagar
+Hmm. वालीकडून
+Android Studio Latest Versions
+How to Forward Calls
+Securely Share Restricted Customer Data
+आईवरील सुंदर मराठी शायरी
+Sargam Notation for "Lal Lal Color Chi Bangdi"
+Change TabBar Text Color
+PDF to Interactive Math Webpage
+Flutter Interview Prep: Senior Level
+Klicknik App Launch Promotional Image
+Dormant Bank Account Meaning and Reactivation
+Application Deployment Status Update
+Decrypting Base64 Encrypted Text
+Mohram kay aahe
+Cross-Platform Flutter C# Encryption Decryption
+Changez khan kon hota
+App Deployment Status Update
+Cross-Platform AES Encryption in Dart/C#
+CBSE विरुद्ध State Board: योग्य निवड
+Add Sitemap to Google Search Console
+Play Store App Test Completion Message
+Project Status Update and Next Steps
+Requesting Support Email SMTP Details
+Mac OS Versions: Latest to Oldest
+पत्नीला आभार संदेश
+Birthday quote for wife in marathi
+Seven Star Deployment Coordination Request
+Prevent Duplicate Course Registrations
+Application Label Suggestions For Collection
+Adding Heatmaps in Flutter
+Hit map in for mobile application explain in maratahi
+साईटमॅप: प्रकार, महत्त्व आणि SEO
+Documents for Mobile Number Update
+Update RC Book Mobile Number Maharashtra
+Update Vehicle Mobile Number Online
+GoDaddy SSL Certificate Costs Explained
+Web Panel Access Details Shared
+Manage Windows Startup Programs
+Find Today's WhatsApp Birthday Message
+GoDaddy Cron Job Explained
+PHP Query Parameters from Request
+Bigtree Entertainment: BookMyShow's Parent Company
+Claude Subscription Bank Statement Name
+Stored Procedure: Manual Challan ID Generation
+7/12 Extract Land Record Details
+Maha rana pratap baddal mahiti dya
+Health Reference Ranges HTML Chart
+Unhali lagli aasel tar gharguti upay
+WhatsApp Disappearing Messages Feature
+App Update Summary and Action Items
+Conversation with Gemini
+build
+
+Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
+This warning indicates that GitHub Actions is transitioning its runtime from Node.js 20 to Node.js 24.
+
+The actions in your workflow (such as actions/checkout@v4 and actions/setup-java@v4) were compiled or configured for Node.js 20. Because GitHub Actions is forcing these tasks onto the Node.js 24 runtime, you see this notice in your job logs.
+
+How to Fix It
+Update the major version tags of the affected actions in your workflow YAML files (located in .github/workflows/):
+
+1. Bump Action Versions
+Update your action tags to versions natively updated to target Node.js 24:
+
+YAML
+# Change from actions/setup-java@v4 to v5
+- uses: actions/setup-java@v5
+  with:
+    java-version: '21'
+    distribution: 'temurin'
+
+# Check for updated versions of checkout or other actions
+- uses: actions/checkout@v4 # Update to @v5 once released, or check for patch updates
+Note: actions/setup-java@v5 moves the internal action runtime from node20 to node24.
+
+2. Audit Other Actions
+Search your .github/workflows/ directory for any other third-party or custom actions:
+
+Third-party actions: Ensure you bump them to their latest release tags.
+
+Custom actions: If you maintain your own custom action in a repo, update runs.using: 'node20' to runs.using: 'node24' inside its action.yml file.
+
+Is my pipeline currently breaking?
+In most cases, no. GitHub Actions is executing your Node 20 actions using the Node 24 engine. However, updating action versions resolves the warning and avoids potential compatibility issues before Node.js 20 is completely removed from runners.
+
+Update Thease Changes inside this file . and Give this file for Download
+
+Your YAML file is ready
+YML icon
+main
+ YML 
+Open
+
+Summary of Changes Made:
+Updated actions/setup-java@v4 to @v5: This upgrades the action to run on Node.js 24 natively, resolving the Node.js 20 deprecation warning.
+
+All other build, test, and artifact configuration steps for your Flutter CI/CD pipeline remain fully intact.
+
+
+
+
+Gemini is AI and can make mistakes.
+
 name: Flutter CI/CD
 
 on:
   push:
-    branches: [ master ] 
+    branches: [ master ] # किंवा master (तुमच्या ब्रांचनुसार बदला)
   pull_request:
     branches: [ master ]
 
@@ -11,13 +168,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code - @v3 ऐवजी @v4 केले
+      # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Set up JDK - @v3 ऐवजी @v4 केले
+      # 2. Set up JDK - Updated to @v5 for Node.js 24 runtime support
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'zulu'
           java-version: '17'
@@ -49,3 +206,5 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+main.yml
+Displaying main.yml.
