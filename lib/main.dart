@@ -99,7 +99,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   final List<String> course = ["Select Course", "Flutter Dev", "Dart", "Java", "Python"];
   String? selectedValue;
   late AnimationController _animationController;
-  late Animation<double> _animation;
 
   @override
   void initState() {
@@ -108,10 +107,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       vsync: this,
       duration: const Duration(milliseconds: 500), // Adjusted duration for a better feel
     );
-    _animation = CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInCubic,
-    );
+
   }
 
   @override
@@ -150,6 +146,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 );
 
                 Future.delayed(const Duration(milliseconds: 3000), () {
+                  if (!mounted) return;
                   if (mounted) {
                     ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
                   }
@@ -174,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   _animationController.forward();
 
                   ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+
                   ScaffoldMessenger.of(context).showMaterialBanner(
                     MaterialBanner(
                       content: Text("You have selected $value"),
