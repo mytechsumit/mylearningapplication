@@ -105,9 +105,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500), // Adjusted duration for a better feel
+      duration: const Duration(milliseconds: 500),
     );
-
   }
 
   @override
@@ -126,18 +125,21 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           children: [
             ElevatedButton(
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
+                final messenger = ScaffoldMessenger.of(context);
+                
+                messenger.showSnackBar(
                   const SnackBar(
                     content: Text("Hello Sumit I am Working Fine For You!"),
                   ),
                 );
-                ScaffoldMessenger.of(context).showMaterialBanner(
+                
+                messenger.showMaterialBanner(
                   MaterialBanner(
                     content: const Text("Hii this is Material Banner."),
                     actions: [
                       TextButton(
                         onPressed: () {
-                          ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                          messenger.hideCurrentMaterialBanner();
                         },
                         child: const Text("Close"),
                       ),
@@ -146,10 +148,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 );
 
                 Future.delayed(const Duration(milliseconds: 3000), () {
-                  if (!mounted) return;
-                  if (mounted) {
-                    ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-                  }
+                  // Using the captured messenger instance to avoid using context across async gaps
+                  messenger.hideCurrentMaterialBanner();
                 });
               },
               child: const Text("Click me !"),
@@ -170,23 +170,22 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   _animationController.reset();
                   _animationController.forward();
 
-                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                  final messenger = ScaffoldMessenger.of(context);
+                  messenger.hideCurrentMaterialBanner();
 
-                  ScaffoldMessenger.of(context).showMaterialBanner(
+                  messenger.showMaterialBanner(
                     MaterialBanner(
                       content: Text("You have selected $value"),
                       actions: [
                         TextButton(
                           onPressed: () {
-                            ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                            messenger.hideCurrentMaterialBanner();
                           },
                           child: const Text("Close"),
                         ),
                       ],
                       shadowColor: Colors.amber,
                       backgroundColor: Colors.green.shade100,
-                      // Note: MaterialBanner animation handling is usually internal,
-                      // but we keep the controller for potential custom use or sync.
                     ),
                   );
                 }
