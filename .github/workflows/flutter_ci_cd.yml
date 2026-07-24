@@ -50,10 +50,11 @@ jobs:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
 
-      # 8. Upload APK to Firebase App Distribution
+      # 8. Upload APK to Firebase App Distribution (Direct CLI Entrypoint)
       - name: Upload APK to Firebase App Distribution
         uses: w9jds/firebase-action@v15.24.0
+        entrypoint: /bin/sh
         with:
-          args: appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app "${{ secrets.FIREBASE_TOKEN }}" --release-notes "New CI/CD Build via GitHub Actions" --groups "testers"
+          args: -c "firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app '${{ secrets.FIREBASE_APP_ID }}' --release-notes 'New CI/CD Build via GitHub Actions' --groups 'testers'"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
