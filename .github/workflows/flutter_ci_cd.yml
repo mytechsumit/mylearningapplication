@@ -2,7 +2,7 @@ name: Flutter CI/CD
 
 on:
   push:
-    branches: [ master ] # तुमच्या मेन ब्रांचचे नाव (उदा. main किंवा master)
+    branches: [ master ] # तुमच्या मुख्य ब्रांचचे नाव (उदा. master किंवा main)
   pull_request:
     branches: [ master ]
 
@@ -43,14 +43,14 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      # 7. Upload APK Artifact (GitHub साठी)
+      # 7. Upload APK Artifact (GitHub Artifacts साठी)
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
 
-      # 8. Upload APK to Firebase App Distribution (Direct CLI Entrypoint)
+      # 8. Upload APK to Firebase App Distribution
       - name: Upload APK to Firebase App Distribution
         uses: w9jds/firebase-action@v15.24.0
         entrypoint: /bin/sh
