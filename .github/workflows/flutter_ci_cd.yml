@@ -55,6 +55,6 @@ jobs:
         uses: w9jds/firebase-action@v15.24.0
         #entrypoint: /bin/sh
         with:
-          args: appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app "${{ secrets.FIREBASE_TOKEN }}" --release-notes "New_Build_CI_CD" --groups "testers"
+          args: appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app "${{ secrets.FIREBASE_APP_ID }}" --release-notes "New_Build_CI_CD" --groups "testers"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
